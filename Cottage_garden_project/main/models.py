@@ -56,8 +56,8 @@ class Garden(models.Model):
     PERENNIAL_PLANTS = 'Perennial plants'
     ANNUAL_PLANTS = 'Annual plants'
     HOME_PLANTS = 'Home plants'
-    GARDEN_NAME_MAX_LEN = 10
-    ADDRESS_MAX_LEN=30
+    GARDEN_NAME_MAX_LEN = 20
+    ADDRESS_MAX_LEN=40
 
     TYPES = [(x,x) for x in (PERENNIAL_PLANTS, ANNUAL_PLANTS, HOME_PLANTS)]
 
@@ -105,9 +105,9 @@ class Plant(models.Model):
     FLOWER = 'Flower'
     OTHER = 'Other'
     TYPES = [(x,x) for x in (FRUIT_TREE, EVERGREEN_TREE, BUSH, CLIMBING_PLANT, VEGETABLE, FLOWER, OTHER)]
-    PLANT_NAME_MAX_LEN=10
-    TYPE_NAME_MAX_LEN=10
-    SORT_NAME_MAX_LEN=10
+    PLANT_NAME_MAX_LEN=15
+    TYPE_NAME_MAX_LEN=15
+    SORT_NAME_MAX_LEN=15
     PLANT_NAME_MIN_LEN=2
     TYPE_NAME_MIN_LEN=2
     SORT_NAME_MIN_LEN=2

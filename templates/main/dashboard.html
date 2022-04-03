@@ -2,7 +2,7 @@
 
 {% block page_content %}
     <h1 class='text-center'>
-        {% if Garden %}
+        {% if not Garden %}
             All Gardens
         {% else %}
             No Gardens yet
@@ -12,35 +12,35 @@
     {% csrf_token %}
     {{ form }}
 
-{#    {% if plant %}#}
-{#        <div class="container mb-5">#}
-{#            <div class="row mb-5">#}
-{#                {% for item in Garden %}#}
-{#                    <div class="card ml-3 mb-3" style="width: 18rem;">#}
-{#                        <!-- Image -->#}
-{#                        <img src="{{ item.name }}"#}
-{#                             class="card-img-top" alt="Photo description">#}
-{#                        <div class="card-body">#}
-{#                            {% for item in plant %}#}
-{#                                <h5 class="card-title">{{ item.name }}{% if item.type %}#}
-{#                                    {% csrf_token %}#}
-{#                                      {{ item.name }}#}
-{#                                {% endif %}</h5>#}
-{#                            {% endfor %}#}
-{#                            <!-- First 30 chars from the description -->#}
-{#                            <p class="card-text">{{ plant.description|truncatechars:30 }}</p>#}
-{#                            <!-- Button to the Photo Details Page -->#}
-{#                            <a href="{% url 'edit plant' pet_photo.id %}" class="btn btn-primary">See details</a>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                {% endfor %}#}
-{#            </div>#}
-{#        </div>#}
-{#    {% else %}#}
-{#        <div class=" row d-flex justify-content-center align-content-center">#}
-{#            <a href="{% url 'add plant' %}" class="btn btn-lg btn-secondary row align-self-baseline">Add#}
-{#                Plant</a>#}
-{#        </div>#}
-{#    {% endif %}#}
+    {% if not plant %}
+        <div class="container mb-5">
+            <div class="row mb-5">
+                {% for item in Garden %}
+                    <div class="card ml-3 mb-3" style="width: 18rem;">
+                        <!-- Image -->
+                        <img src="{{ item.name }}"
+                             class="card-img-top" alt="Photo description">
+                        <div class="card-body">
+                            {% for item in plant %}
+                                <h5 class="card-title">{{ item.name }}{% if item.type %}
+                                    {% csrf_token %}
+                                      {{ item.name }}
+                                {% endif %}</h5>
+                            {% endfor %}
+                            <!-- First 30 chars from the description -->
+                            <p class="card-text">{{ plant.description|truncatechars:30 }}</p>
+                            <!-- Button to the Photo Details Page -->
+                            <a href="{% url 'edit plant' pet_photo.id %}" class="btn btn-primary">See details</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <div class=" row d-flex justify-content-center align-content-center">
+            <a href="{% url 'add garden' %}" class="btn btn-lg btn-secondary row align-self-baseline">Add
+                Garden</a>
+        </div>
+    {% endif %}
 
 {% endblock %}

@@ -5,7 +5,7 @@ from django.views.generic import CreateView, DetailView
 from Cottage_garden_project.accounts.models import GardenPlantsUser, Profile
 from Cottage_garden_project.accounts.forms import CreateProfileForm
 from Cottage_garden_project.common.mixin import RedirectToDashboard
-from Cottage_garden_project.main.models import Garden
+from Cottage_garden_project.main.models import Garden, Plant
 
 
 class UserRegistrationView(RedirectToDashboard, CreateView):
@@ -33,20 +33,17 @@ class ProfileDetailsView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # self.object is a Profile instance
-        pets = list(Garden.objects.filter(user_id=self.object.user_id))
+        gardens = list(Garden.objects.filter(user_id=self.object.user_id))
+        plants = list(Plant.objects.filter(user_id=self.object.user_id))
 
-        garden_photos = Garden.objects \
-            .filter(tagged_pets__in=pets) \
-            .distinct()
-
-        total_likes_count = sum(pp.likes for pp in garden_photos)
-        total_pet_photos_count = len(garden_photos)
+        total_plants_count = len(plants)
+        total_gardens_count = len(gardens)
 
         context.update({
-            'total_likes_count': total_likes_count,
-            'total_pet_photos_count': total_pet_photos_count,
+            'total_plants_count': total_plants_count,
+            'total_gardens_count': total_gardens_count,
             'is_owner': self.object.user_id == self.request.user.id,
-            'pets': pets,
+
         })
 
         return context

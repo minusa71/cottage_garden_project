@@ -6,7 +6,7 @@ from Cottage_garden_project.main.views import HomeView, UserDashboardView, Creat
 
 urlpatterns = [
       path('', HomeView.as_view(), name='show home'),
-      path('dashboard/', UserDashboardView.as_view(), name='dashboard'),
+      path('dashboard', UserDashboardView.as_view(), name='dashboard'),
 
 
       path('create_garden/', CreateGarden.as_view(), name='add garden'),

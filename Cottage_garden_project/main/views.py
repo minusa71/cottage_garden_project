@@ -22,10 +22,10 @@ class HomeView(views.TemplateView):
     #     return super().dispatch(request,args,kwargs)
 
 
-class DashboardView(views.ListView):
+class UserDashboardView(views.ListView):
     model = Garden
     template_name = 'main/dashboard.html'
-    context_object_name = Garden.objects.all()
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -33,29 +33,15 @@ class DashboardView(views.ListView):
         return context
 
 
-class profile_details(views.View):
-    model = Profile
-    template_name = 'template name'
-
-
-def show_dashboard(request):
-    return render(request, 'main/dashboard.html')
-
-
-# class UserDashboardView(views.ListView):
-#     def show_dashboard(self):
-#         return render(self, 'main/dashboard.html')
-
-
-class UserDashboardView(views.ListView):
-    model = Plant
-    template_name = 'main/dashboard.html'
-    context_object_name = Plant.objects.all()
+# class profile_details(views.View):
+#     model = Profile
+#     template_name = 'template name'
 
 
 class CreatePlantView(views.CreateView):
     template_name = 'main/add_plant.html'
     form_class = CreatePlantForm
+    success_url = reverse_lazy('dashboard')
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
@@ -77,6 +63,7 @@ class DeletePlantView(views.DeleteView):
 class CreateGarden(views.CreateView):
     form_class = CreateGardenForm
     template_name = 'main/create_garden.html'
+    success_url = reverse_lazy('dashboard')
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
