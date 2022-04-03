@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath cottage-garden-project cottage-garden-project.wsgi
+web: gunicorn --pythonpath cottage-garden-test cottage-garden-test.wsgi
