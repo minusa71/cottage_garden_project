@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page_content %}
+    <div class="jumbotron">
+    <h1 class="display-4" >Welcome to Cottage Garden</h1>
+        <img style="width: 100%"
+             src="{% static 'images/garden_3.png' %}" alt="">
+        <div class="position-sticky">
+
+            <p class="lead">Create your own garden.</p>
+            <hr class="my-4">
+            <div class="flex-row">
+
+                <!-- Login Button -->
+
+
+                <!-- Register Button -->
+                {% if not request.user.is_authenticated %}
+                        <a href="{% url 'login user' %}" class="btn btn-lg btn-secondary">Login</a>
+                        <a href="{% url 'register user' %}" class="btn btn-lg btn-secondary">Register</a>
+{#                       <a href="{% url 'add garden' %}" class="btn btn-lg btn-secondary">Add garden</a>#}
+{#                        <a href="{% url 'add plant' %}"  class="btn btn-lg btn-secondary">Add plant</a>#}
+                {% endif %}
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
