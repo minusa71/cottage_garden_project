@@ -47,7 +47,10 @@ class Profile(models.Model):
         )
     )
 
-    picture = models.URLField()
+    picture = models.URLField(
+        null=True,
+        blank=True,
+    )
 
     date_of_birth = models.DateField(
         null=True,

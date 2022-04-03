@@ -1,3 +1,4 @@
+import plant as plant
 from django.contrib.auth import forms as auth_forms
 from django.urls import reverse_lazy
 from django.views import generic as views
@@ -41,9 +42,15 @@ def show_dashboard(request):
     return render(request, 'main/dashboard.html')
 
 
+# class UserDashboardView(views.ListView):
+#     def show_dashboard(self):
+#         return render(self, 'main/dashboard.html')
+
+
 class UserDashboardView(views.ListView):
-    def show_dashboard(self):
-        return render(self, 'main/dashboard.html')
+    model = Plant
+    template_name = 'main/dashboard.html'
+    context_object_name = Plant.objects.all()
 
 
 class CreatePlantView(views.CreateView):
@@ -57,6 +64,7 @@ class CreatePlantView(views.CreateView):
 
 
 class EditPlantView(views.UpdateView):
+    all_plants = Plant.objects.all()
     template_name = 'main/plant_edit.html'
     form_class = EditPlantForm
 

@@ -11,8 +11,8 @@ urlpatterns = [
 
       path('create_garden/', CreateGarden.as_view(), name='add garden'),
       path('plant/add/', CreatePlantView.as_view(), name='add plant'),
-      path('plant/edit/<int:pk>/', EditPlantView.as_view(), name='edit pet'),
-      path('plant/delete/<int:pk>/', DeletePlantView.as_view(), name='delete pet'),
+      path('plant/edit/<int:pk>/', EditPlantView.as_view(), name='edit plant'),
+      path('plant/delete/<int:pk>/', DeletePlantView.as_view(), name='delete plant'),
 
 
 ]

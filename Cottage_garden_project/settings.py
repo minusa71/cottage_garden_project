@@ -27,7 +27,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    'cottage-garden-test.herokuapp.com'
+    'cottage-garden-test.herokuapp.com',
+
 
 ]
 
