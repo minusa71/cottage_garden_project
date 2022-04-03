@@ -103,6 +103,7 @@ class Plant(models.Model):
     CLIMBING_PLANT = 'Climbing plants'
     VEGETABLE = 'Vegetable'
     FLOWER = 'Flower'
+    OTHER = 'Other'
     TYPES = [(x,x) for x in (FRUIT_TREE, EVERGREEN_TREE, BUSH, CLIMBING_PLANT, VEGETABLE, FLOWER)]
     PLANT_NAME_MAX_LEN=10
     TYPE_NAME_MAX_LEN=10
