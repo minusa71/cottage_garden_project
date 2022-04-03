@@ -1,1 +1,1 @@
-web: gunicorn cottage-garden-test.wsgi
+web: gunicorn cottage-garden-project.cottage-garden-test.wsgi
