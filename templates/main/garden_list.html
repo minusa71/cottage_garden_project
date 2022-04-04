@@ -9,7 +9,7 @@
 
     {% for item in garden_list  %}
         <div>
-        {{item.name.upper}} -- {{ item.type }} -- {{ item.image }}
+        <a href="{% url 'edit plant' pk=item.pk %}   ">{{ item.name.upper }} - {{ item.type }}</a>
         {% csrf_token %}
         </div>
     {% endfor %}
