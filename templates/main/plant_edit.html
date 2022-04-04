@@ -5,9 +5,17 @@
     <div class="row">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
-            <form method="post" action="{% url 'edit plant' plant.pk %}">
+            {% if not get_queryset %}
+                <h3>Garden plants</h3>
+            {% else %}
+                <h3>There is not plant yet!</h3>
+            {% endif %}
+            {% for item in get_queryset %}
+            <form method="post" action="{% url 'edit plant' pk=item.pk %}">
+
                 {% csrf_token %}
                 {{ form }}
+            {% endfor %}
 
                 <button class="btn btn-primary mt-2" type="submit">Edit</button>
             </form>

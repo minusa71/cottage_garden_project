@@ -24,6 +24,7 @@ class HomeView(views.TemplateView):
 
 class UserDashboardView(views.ListView):
     model = Garden
+    paginate_by = 10
 
 
 
@@ -56,9 +57,14 @@ class CreatePlantView(views.CreateView):
 
 
 class EditPlantView(views.UpdateView):
-    all_plants = Plant.objects.all()
+    # all_plants = Plant.objects.all()
     template_name = 'main/plant_edit.html'
     form_class = EditPlantForm
+
+    def get_queryset(self):
+        return Plant.objects.all()
+
+
 
 
 class DeletePlantView(views.DeleteView):
