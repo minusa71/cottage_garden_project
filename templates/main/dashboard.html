@@ -2,7 +2,7 @@
 
 {% block page_content %}
     <h1 class='text-center'>
-        {% if not Garden %}
+        {% if object_list %}
             All Gardens
         {% else %}
             No Gardens yet
@@ -12,10 +12,10 @@
     {% csrf_token %}
     {{ form }}
 
-    {% if not plant %}
+    {% if object_list %}
         <div class="container mb-5">
             <div class="row mb-5">
-                {% for item in Garden %}
+                {% for item in object_list %}
                     <div class="card ml-3 mb-3" style="width: 18rem;">
                         <!-- Image -->
                         <img src="{{ item.name }}"
@@ -30,7 +30,7 @@
                             <!-- First 30 chars from the description -->
                             <p class="card-text">{{ plant.description|truncatechars:30 }}</p>
                             <!-- Button to the Photo Details Page -->
-                            <a href="{% url 'edit plant' pet_photo.id %}" class="btn btn-primary">See details</a>
+                            <a href="{% url 'edit plant' object_list.index %}" class="btn btn-primary">See details</a>
                         </div>
                     </div>
                 {% endfor %}
