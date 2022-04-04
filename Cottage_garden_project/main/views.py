@@ -25,16 +25,18 @@ class HomeView(views.TemplateView):
 class UserDashboardView(views.ListView):
     model = Garden
 
-    template_name = 'main/dashboard.html'
+
+
+    # template_name = 'main/dashboard.html'
 
     # def get_queryset(self):
     #     return Garden.objects.all()
 
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['hide_additional_nav_data'] = True
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['hide_additional_nav_data'] = True
+    #     return context
 
 
 # class profile_details(views.View):
