@@ -1,3 +1,5 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +8,14 @@
 </head>
 <body>
     <H3>Gardens of user:</H3>
-
+    {% if Gardens %}
     {% for item in garden_list  %}
         <div>
         <a href="{% url 'edit plant' pk=item.pk %}   ">{{ item.name.upper }} - {{ item.type }}</a>
         {% csrf_token %}
         </div>
     {% endfor %}
+    {% endif %}
 </body>
 </html>
+{% endblock %}
