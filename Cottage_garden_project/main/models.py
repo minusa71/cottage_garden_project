@@ -1,10 +1,10 @@
-from django.contrib.auth.backends import UserModel
-from django.contrib.messages.storage import session
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
 from django.db import models
 from django.utils.deconstruct import deconstructible
-from django.contrib.auth import models as auth_models, get_user_model
+from django.contrib.auth import get_user_model
+from cloudinary.models import CloudinaryField
+
 
 from Cottage_garden_project.accounts.models import Profile
 
@@ -53,6 +53,7 @@ class MaxFileSizeInMBValidator:
 
 
 class Garden(models.Model):
+
     PERENNIAL_PLANTS = 'Perennial plants'
     ANNUAL_PLANTS = 'Annual plants'
     HOME_PLANTS = 'Home plants'
@@ -78,13 +79,10 @@ class Garden(models.Model):
         max_length=ADDRESS_MAX_LEN,
     )
 
-    image = models.ImageField(
-        upload_to=IMAGE_UPLOAD_DIR,
+    image = CloudinaryField(
+        'image',
         null=True,
         blank=True,
-        validators=(
-            MaxFileSizeInMBValidator(IMAGE_MAX_SIZE_VALIDATOR),
-        )
     )
 
     user = models.ForeignKey(
@@ -137,14 +135,11 @@ class Plant(models.Model):
         )
     )
 
-    image = models.ImageField(
-        upload_to=IMAGE_UPLOAD_DIR,
+    image = CloudinaryField(
+        'image',
         null=True,
         blank=True,
-        validators=(
-            MaxFileSizeInMBValidator(IMAGE_MAX_SIZE_VALIDATOR),
-        )
-    )
+                            )
 
     year = models.DateField(
 
