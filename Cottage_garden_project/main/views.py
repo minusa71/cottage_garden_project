@@ -23,6 +23,7 @@ class HomeView(views.TemplateView):
 
 
 class UserDashboardView(views.ListView):
+    template_name = 'main/garden_list.html'
     model = Garden
     paginate_by = 10
 
