@@ -147,7 +147,8 @@ class Plant(models.Model):
 
     plant_protections = models.CharField(
         max_length=PLANT_PROT_NAME_MAX_LEN,
-
+        null=True,
+        blank=True,
     )
 
     harvest_quantity = models.FloatField(

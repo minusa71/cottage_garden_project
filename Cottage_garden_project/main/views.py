@@ -1,8 +1,5 @@
-import plant as plant
-from django.contrib.auth import forms as auth_forms
 from django.urls import reverse_lazy
 from django.views import generic as views
-from django.shortcuts import render, redirect
 from Cottage_garden_project.main.forms import CreateGardenForm,  CreatePlantForm, \
     EditPlantForm, DeletePlantForm
 from Cottage_garden_project.main.models import Profile, Plant, Garden
@@ -25,7 +22,7 @@ class HomeView(views.TemplateView):
 class UserDashboardView(views.ListView):
     template_name = 'main/garden_list.html'
     model = Garden
-    paginate_by = 10
+    paginate_by = 8
 
 
 

@@ -9,7 +9,7 @@ from Cottage_garden_project.common.validators import MaxDateValidator
 from Cottage_garden_project.main.models import Garden,  Plant, PlantProtection, UseFullTips
 
 
-class CreateGardenForm(BootstrapFormMixin,forms.ModelForm):
+class CreateGardenForm(BootstrapFormMixin, forms.ModelForm):
     def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.user = user
