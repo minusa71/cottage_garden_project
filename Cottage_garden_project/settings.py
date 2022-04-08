@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Cottage_garden_project.main',
     'Cottage_garden_project.accounts',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [

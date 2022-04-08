@@ -3,6 +3,9 @@ from django.views import generic as views
 from Cottage_garden_project.main.forms import CreateGardenForm,  CreatePlantForm, \
     EditPlantForm, DeletePlantForm
 from Cottage_garden_project.main.models import Profile, Plant, Garden
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 
 class HomeView(views.TemplateView):
