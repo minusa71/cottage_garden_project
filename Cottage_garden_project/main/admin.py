@@ -10,4 +10,6 @@ class ProfileAdmin(admin.ModelAdmin):
 
 @admin.register(Plant)
 class PlantAdmin(admin.ModelAdmin):
-    pass
+    class Meta:
+        model = Plant
+        fields = ('name', 'type', 'sort', 'image','year', 'harvest_quantity' , 'garden')
