@@ -94,6 +94,20 @@ class Garden(models.Model):
         unique_together = ('user', 'name')
 
 
+class PlantProtection(models.Model):
+    PLANT_DESC_MAX_LEN=30
+    product_name = models.CharField(
+        max_length=PLANT_PROT_NAME_MAX_LEN,
+    )
+    description = models.CharField(
+        max_length=PLANT_DESC_MAX_LEN,
+    )
+    price = models.FloatField()
+
+    def __str__(self):
+        return self.product_name
+
+
 class Plant(models.Model):
     FRUIT_TREE = 'Fruit tree'
     EVERGREEN_TREE = 'Evergreen tree'
@@ -135,11 +149,7 @@ class Plant(models.Model):
         )
     )
 
-    image = CloudinaryField(
-        'image',
-        null=True,
-        blank=True,
-                            )
+    image = CloudinaryField('image')
 
     year = models.DateField(
 
@@ -156,7 +166,7 @@ class Plant(models.Model):
     )
 
     plant_protection = models.ManyToManyField(
-        'PlantProtection',
+        PlantProtection,
     )
 
     garden = models.ForeignKey(
@@ -191,18 +201,7 @@ class Plant(models.Model):
 #         on_delete=models.CASCADE,
 #     )
 
-class PlantProtection(models.Model):
-    PLANT_DESC_MAX_LEN=30
-    product_name = models.CharField(
-        max_length=PLANT_PROT_NAME_MAX_LEN,
-    )
-    description = models.CharField(
-        max_length=PLANT_DESC_MAX_LEN,
-    )
-    price = models.FloatField()
 
-    def __str__(self):
-        return self.product_name
 
 
 class UseFullTips(models.Model):
