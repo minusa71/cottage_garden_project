@@ -4,9 +4,7 @@ from django.db import models
 from django.utils.deconstruct import deconstructible
 from django.contrib.auth import get_user_model
 from cloudinary import models as cloudinary_models
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
+
 
 
 from Cottage_garden_project.accounts.models import Profile
