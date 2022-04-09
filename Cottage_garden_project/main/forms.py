@@ -1,13 +1,11 @@
 from datetime import date
-from enum import auto
-
 from django import forms
-
-from Cottage_garden_project.accounts.models import Profile
 from Cottage_garden_project.common.helpers import BootstrapFormMixin, DisabledFieldsFormMixin
 from Cottage_garden_project.common.validators import MaxDateValidator
 from Cottage_garden_project.main.models import Garden,  Plant, PlantProtection, UseFullTips
-
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 class CreateGardenForm(BootstrapFormMixin, forms.ModelForm):
     def __init__(self, user, *args, **kwargs):
@@ -29,6 +27,7 @@ class CreateGardenForm(BootstrapFormMixin, forms.ModelForm):
 
     class Meta:
         model = Garden
+
         fields = ('name', 'type', 'address', 'image')
         widgets = {
             'name': forms.TextInput(
@@ -38,6 +37,7 @@ class CreateGardenForm(BootstrapFormMixin, forms.ModelForm):
 
             ),
         }
+
 
 
 class CreatePlantForm(BootstrapFormMixin, forms.ModelForm):

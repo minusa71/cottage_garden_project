@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic as views
 from Cottage_garden_project.main.forms import CreateGardenForm,  CreatePlantForm, \
@@ -26,24 +27,6 @@ class UserDashboardView(views.ListView):
     template_name = 'main/garden_list.html'
     model = Garden
     paginate_by = 8
-
-
-
-    # template_name = 'main/dashboard.html'
-
-    # def get_queryset(self):
-    #     return Garden.objects.all()
-
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['hide_additional_nav_data'] = True
-    #     return context
-
-
-# class profile_details(views.View):
-#     model = Profile
-#     template_name = 'template name'
 
 
 class CreatePlantView(views.CreateView):
@@ -82,6 +65,8 @@ class CreateGarden(views.CreateView):
         kwargs = super().get_form_kwargs()
         kwargs['user'] = self.request.user
         return kwargs
+
+
 
 
 
