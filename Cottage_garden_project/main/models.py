@@ -80,7 +80,11 @@ class Garden(models.Model):
         max_length=ADDRESS_MAX_LEN,
     )
 
-    image = cloudinary_models.CloudinaryField('image')
+    image = cloudinary_models.CloudinaryField(
+        'image',
+        null=True,
+        blank=True,
+    )
 
     user = models.ForeignKey(
         User_Model,
@@ -146,7 +150,11 @@ class Plant(models.Model):
         )
     )
 
-    image = cloudinary_models.CloudinaryField('image')
+    image = cloudinary_models.CloudinaryField(
+        'image',
+        null=True,
+        blank=True,
+    )
 
     year = models.DateField(
 
@@ -162,9 +170,9 @@ class Plant(models.Model):
 
     )
 
-    plant_protection = models.ManyToManyField(
-        PlantProtection,
-    )
+    # plant_protection = models.ManyToManyField(
+    #     PlantProtection,
+    # )
 
     garden = models.ForeignKey(
         Garden,

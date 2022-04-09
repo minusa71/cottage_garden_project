@@ -13,19 +13,14 @@ class CreateGardenForm(BootstrapFormMixin, forms.ModelForm):
 
 
     def save(self, commit=True):
-        # commit false does not persist to database
-        # just returns the object to be created
         garden = super().save(commit=False)
-
         garden.user = self.user
         if commit:
             garden.save()
-
         return garden
 
     class Meta:
         model = Garden
-
         fields = ('name', 'type', 'address', 'image')
         widgets = {
             'name': forms.TextInput(
@@ -45,19 +40,15 @@ class CreatePlantForm(BootstrapFormMixin, forms.ModelForm):
         self._init_bootstrap_form_controls()
 
     def save(self, commit=True):
-        # commit false does not persist to database
-        # just returns the object to be created
         plant = super().save(commit=False)
-
         plant.user = self.user
         if commit:
             plant.save()
-
         return plant
 
     class Meta:
         model = Plant
-        fields = ('name', 'type', 'sort', 'image','year', 'harvest_quantity' , 'garden')
+        fields = ('name', 'type', 'sort', 'image','year', 'harvest_quantity', 'garden')
         widgets = {
             'name': forms.TextInput(
                 attrs={
