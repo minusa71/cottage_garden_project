@@ -12,10 +12,10 @@
     {% for item in garden_list  %}
         <div>
         <a href="{% url 'edit plant' pk=item.pk %}">{{ item.name.upper }} - {{ item.type }} - {{ "owner:" }} {{ item.user }}</a>
-
+        <img src="{{  item.image.url}}" alt="Garden image" width="300">
         {% csrf_token %}
         </div>
-{#        <img src="{%  url item.image %}" alt="Garden image" width="500" height="600">#}
+
     {% endfor %}
     {% endif %}
 </body>

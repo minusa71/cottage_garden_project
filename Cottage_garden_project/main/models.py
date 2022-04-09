@@ -3,7 +3,7 @@ from django.core.validators import MinLengthValidator
 from django.db import models
 from django.utils.deconstruct import deconstructible
 from django.contrib.auth import get_user_model
-from cloudinary.models import CloudinaryField
+from cloudinary import models as cloudinary_models
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -82,11 +82,7 @@ class Garden(models.Model):
         max_length=ADDRESS_MAX_LEN,
     )
 
-    image = CloudinaryField(
-        'image',
-        null=True,
-        blank=True,
-    )
+    image = cloudinary_models.CloudinaryField('image')
 
     user = models.ForeignKey(
         User_Model,
@@ -152,7 +148,7 @@ class Plant(models.Model):
         )
     )
 
-    image = CloudinaryField('image')
+    image = cloudinary_models.CloudinaryField('image')
 
     year = models.DateField(
 
