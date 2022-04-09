@@ -22,7 +22,8 @@
                              class="card-img-top" alt="Photo description">
                         <div class="card-body">
                             {% for item in plant %}
-                                <h5 class="card-title">{{ item.name }}{% if item.type %}
+                                <h5 class="card-title">{{ item.name }}
+                                    {% if item.type %}
                                     {% csrf_token %}
                                       {{ item.name }}
                                 {% endif %}</h5>

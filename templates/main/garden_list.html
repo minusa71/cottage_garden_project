@@ -10,9 +10,15 @@
     <H3>List of gardens:</H3>
     {% if not Gardens %}
     {% for item in garden_list  %}
-        <div>
-        <a href="{% url 'edit plant' pk=item.pk %}">{{ item.name.upper }} - {{ item.type }} - {{ "owner:" }} {{ item.user }}</a>
-        <img src="{{  item.image.url}}" alt="Garden image" width="300">
+        <div class="card" style="width: 25rem;">
+{#        <a href="{% url 'edit plant' pk=item.pk %}">{{ item.name.upper }} - {{ item.type }} - {{ "owner:" }} {{ item.user }}</a>#}
+        <img src="{{ item.image.url}}" class="card-img-top" alt="Garden image" width="40">
+            <div class="card-body">
+                 <h5 class="card-title">{{ "Type: " }}{{ item.type.upper }}  </h5>
+                <h6 class=card-text">{{ "Address:" }} {{ item.address }}</h6>
+                <h7 class="card-text">{{ "Owner:" }} {{ item.user }}</h7>
+                <a href="#" class="btn btn-primary">Show plants</a>
+            </div>
         {% csrf_token %}
         </div>
 
