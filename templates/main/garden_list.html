@@ -11,7 +11,7 @@
     {% if not Gardens %}
     {% for item in garden_list %}
 
-        <div class="card" style="width: 25rem;">
+        <div class="card" style="width: 40rem;">
         <img src="{{ item.image.url}}" class="card-img-top" alt="Garden image" width="40">
             <div class="card-body">
                 <h5 class="card-title">{{ "Owner: " }}{{ item.user }}  </h5>
