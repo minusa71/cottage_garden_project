@@ -2,21 +2,18 @@
 {% block page_content %}
 
 <div class="container mb-5">
-
-    <h2 class="text-center">Login to Your Profile</h2>
+    <h1 class="text-center">Logout</h1>
     <div class="row">
-
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
             <!-- Login Form -->
-            <form method="POST" action="{% url 'login user' %}">
+            <form method="POST" action="{% url 'logout user' %}">
                 <div>
                     {%csrf_token%}
                     {{ form }}
-                <button class="btn btn-primary mt-2" type="submit">Log in</button>
+                <button class="btn btn-primary mt-2" type="submit">Logout</button>
                 </div>
             </form>
-            <a class="btn btn-primary mt-2" href="{% url 'change_password' %}"  >Change password</a>
             <!-- End Login Form -->
         </div>
         <div class="col-lg-3"></div>

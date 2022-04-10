@@ -8,19 +8,17 @@
             </div>
             <div class="d-inline p-2 w-50">
                 <div class="d-flex flex-column">
-                    <h5><u>Name:</u> {{ profile.first_name }} {{ profile.last_name }}</h5>
-                    {#  getter property `fullname` in profile is also fine #}
-
+                    <h5><u>Name:</u> {{ profile.first_name }} </h5>
                     {# <h5><u>Birthdate:</u> July 15, 1999</h5>#}
-{#                    {% if profile.date_of_birth %}#}
-{#                        <h5><u>Birthdate:</u> {{ profile.date_of_birth }}</h5>#}
-{#                    {% endif %}#}
-{#                    {% if profile.email %}#}
-{#                        <h5><u>Email:</u> {{ profile.email }}</h5>#}
-{#                    {% endif %}#}
-{#                    {% if profile.description %}#}
-{#                        <h5><u>Description:</u> {{ profile.description }}</h5>#}
-{#                    {% endif %}#}
+                    {% if profile.date_of_birth %}
+                        <h5><u>Birthdate:</u> {{ profile.date_of_birth }}</h5>
+                    {% endif %}
+                    {% if profile.email %}
+                        <h5><u>Email:</u> {{ profile.email }}</h5>
+                    {% endif %}
+                    {% if profile.description %}
+                        <h5><u>Description:</u> {{ profile.description }}</h5>
+                    {% endif %}
                 </div>
                 <p class="mt-2">Number of Gardens: {{ total_gardens_count }}</p>
                 <p class="mt-2">Number of Plants: {{ total_plants_count }}</p>
@@ -38,7 +36,7 @@
     <h2 class="text-center">My Plants</h2>
     <div class="container mb-4">
         <div class="d-flex justify-content-start mb-5">
-            {% for plants in plants_details %}
+            {% for plants in plant_list %}
                 <div style="width: 18rem;">
                     <h5>{{ plants.name}}</h5>
                     {% if plant.year %}
