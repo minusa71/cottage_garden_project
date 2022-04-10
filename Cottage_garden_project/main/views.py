@@ -27,6 +27,12 @@ class UserDashboardView(views.ListView):
     paginate_by = 8
 
 
+class PlantView(views.ListView):
+    template_name = 'main/plant_list.html'
+    model = Plant
+    paginate_by = 8
+
+
 class CreatePlantView(views.CreateView):
     template_name = 'main/add_plant.html'
     form_class = CreatePlantForm

@@ -28,14 +28,14 @@ class UserLoginView(auth_views.LoginView):
 class ProfileDetailsView(DetailView):
     model = Profile
     template_name = 'accounts/profile_details.html'
-    # context_object_name = 'profile'
+    context_object_name = 'profile'
 
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # self.object is a Profile instance
-        gardens = list(Garden.objects.filter(user_id=self.object.user_id))
-        plants = list(Plant.objects.filter(user_id=self.object.user_id))
+        gardens = list(Profile.objects.filter(user_id=self.object.user_id))
+        plants = list(Profile.objects.filter(user_id=self.object.user_id))
 
         total_plants_count = len(plants)
         total_gardens_count = len(gardens)
