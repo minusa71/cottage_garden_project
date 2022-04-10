@@ -1,7 +1,5 @@
 from django import forms
 from django.contrib.auth import forms as auth_forms, get_user_model
-from django.conf import settings
-import Cottage_garden_project.settings
 from Cottage_garden_project.accounts.models import Profile
 from Cottage_garden_project.common.helpers import BootstrapFormMixin
 from Cottage_garden_project.main.models import Plant

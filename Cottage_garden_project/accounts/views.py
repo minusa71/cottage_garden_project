@@ -1,17 +1,11 @@
 from django.contrib.auth.forms import PasswordChangeForm
-from django.contrib.auth.views import PasswordChangeView
 from django.contrib.auth import views as auth_views, logout, update_session_auth_hash
 from django.contrib import messages
 from django.http import HttpRequest
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
-
-
-
+from django.views import generic
 from django.views.generic import CreateView, DetailView, TemplateView
-
-
-
 from Cottage_garden_project.accounts.models import GardenPlantsUser, Profile
 from Cottage_garden_project.accounts.forms import CreateProfileForm
 from Cottage_garden_project.common.mixin import RedirectToDashboard
@@ -25,6 +19,17 @@ class UserRegistrationView(RedirectToDashboard, CreateView):
     success_url = reverse_lazy('dashboard')
 
 
+class UserEditView(generic.UpdateView):
+    model = GardenPlantsUser
+    form_class = CreateProfileForm
+    template_name = 'accounts/profile_edit.html'
+    success_url = reverse_lazy('dashboard')
+
+    def get_object(self):
+        return self.request.user
+
+
+
 class UserLoginView(auth_views.LoginView):
     template_name = 'accounts/login_page.html'
     success_url = reverse_lazy('dashboard')
@@ -34,14 +39,6 @@ class UserLoginView(auth_views.LoginView):
             return self.success_url
         return super().get_success_url()
 
-
-# class UserLogoutView(View):
-#     template_name = 'accounts/logout_page.html'
-#     success_url = reverse_lazy('dashboard')
-#
-#     def get(self, name):
-#         logout(self)
-#         return HttpResponseRedirect(settings.LOGIN_URL)
 
 class UserLogoutView(TemplateView):
 
@@ -82,9 +79,6 @@ class ProfileDetailsView(DetailView):
 class EditProfileView:
     pass
 
-
-class ChangeUserPasswordView(PasswordChangeView):
-    template_name = 'accounts/change_password.html'
 
 def change_password(request):
     if request.method == 'POST':

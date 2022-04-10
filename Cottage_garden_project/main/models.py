@@ -170,9 +170,9 @@ class Plant(models.Model):
 
     )
 
-    # plant_protection = models.ManyToManyField(
-    #     PlantProtection,
-    # )
+    plant_protection = models.ManyToManyField(
+        PlantProtection,
+    )
 
     garden = models.ForeignKey(
         Garden,

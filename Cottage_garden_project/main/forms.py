@@ -29,6 +29,12 @@ class CreateGardenForm(BootstrapFormMixin, forms.ModelForm):
                 }
 
             ),
+            'address': forms.TextInput(
+                attrs={
+                    'placeholder': 'Enter short address',
+                }
+
+            ),
         }
 
 
@@ -52,7 +58,17 @@ class CreatePlantForm(BootstrapFormMixin, forms.ModelForm):
         widgets = {
             'name': forms.TextInput(
                 attrs={
-                    'placeholder': 'Enter plant name',
+                    'placeholder': 'Enter plant name: e.g. apple ',
+                }
+            ),
+            'sort': forms.TextInput(
+                attrs={
+                    'placeholder': 'Sort of e.g. "green"',
+                }
+            ),
+            'year': forms.TextInput(
+                attrs={
+                    'placeholder': 'YYYY-MM-DD',
                 }
             ),
         }

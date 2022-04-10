@@ -1,10 +1,8 @@
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic as views
 from Cottage_garden_project.main.forms import CreateGardenForm,  CreatePlantForm, \
     EditPlantForm, DeletePlantForm
 from Cottage_garden_project.main.models import Profile, Plant, Garden
-
 
 
 class HomeView(views.TemplateView):
@@ -24,7 +22,7 @@ class HomeView(views.TemplateView):
 class UserDashboardView(views.ListView):
     template_name = 'main/garden_list.html'
     model = Garden
-    paginate_by = 8
+    ordering = ['-user']
 
 
 class PlantView(views.ListView):
@@ -45,14 +43,12 @@ class CreatePlantView(views.CreateView):
 
 
 class EditPlantView(views.UpdateView):
-    # all_plants = Plant.objects.all()
+    all_plants = Plant.objects.all()
     template_name = 'main/plant_edit.html'
     form_class = EditPlantForm
 
     def get_queryset(self):
         return Plant.objects.all()
-
-
 
 
 class DeletePlantView(views.DeleteView):
