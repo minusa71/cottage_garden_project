@@ -8,14 +8,14 @@
 </head>
 <body>
     <H3>List of plants:</H3>
-    {% if not Plant %}
+    {% if not plant_list %}
     {% for item in plant_list  %}
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src=" {{ item.image }}" alt="First slide">
+                    <h5 class="card-title">{{ "Name: " }}{{ item.name }}  </h5>
+                    <img class="d-block w-100" src=" {{ item.image.name }}" alt="First slide">
                 </div>
-
             </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -1,3 +1,4 @@
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import generic as views
 from Cottage_garden_project.main.forms import CreateGardenForm,  CreatePlantForm, \
@@ -22,13 +23,29 @@ class HomeView(views.TemplateView):
 class UserDashboardView(views.ListView):
     template_name = 'main/garden_list.html'
     model = Garden
+    ordering = ['name']
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(user=self.request.user)
+
+
+class UserDashboardView_ALL(views.ListView):
+    template_name = 'main/garden_list.html'
+    model = Garden
     ordering = ['-user']
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(user=self.request.user)
 
 
 class PlantView(views.ListView):
     template_name = 'main/plant_list.html'
     model = Plant
-    paginate_by = 8
+
+    def get_queryset(self):
+        return self.request.user
 
 
 class CreatePlantView(views.CreateView):

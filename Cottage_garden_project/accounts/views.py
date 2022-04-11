@@ -29,7 +29,6 @@ class UserEditView(generic.UpdateView):
         return self.request.user
 
 
-
 class UserLoginView(auth_views.LoginView):
     template_name = 'accounts/login_page.html'
     success_url = reverse_lazy('dashboard')
@@ -59,16 +58,16 @@ class ProfileDetailsView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['garden'] = 'user'
-        # gardens = list(Profile.objects.filter(user_id=self.object.user_id))
-        # plants = list(Profile.objects.filter(user_id=self.object.user_id))
+        gardens = list(Profile.objects.filter(user_id=self.object.user_id))
+        plants = list(Profile.objects.filter(user_id=self.object.user_id))
 
-        # total_plants_count = len(gardens)
-        # total_gardens_count = len(gardens)
+        total_plants_count = len(plants)
+        total_gardens_count = len(gardens)
 
         context.update({
-            'garden' : 'user',
-            # 'total_plants_count': total_plants_count,
-            # 'total_gardens_count': total_gardens_count,
+            'garden': 'user',
+            'total_plants_count': total_plants_count,
+            'total_gardens_count': total_gardens_count,
             'is_owner': self.object.user_id == self.request.user.id,
 
         })

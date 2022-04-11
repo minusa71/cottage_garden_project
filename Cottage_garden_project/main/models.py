@@ -94,6 +94,9 @@ class Garden(models.Model):
     class Meta:
         unique_together = ('user', 'name')
 
+    def __str__(self):
+        return self.name
+
 
 class PlantProtection(models.Model):
     PLANT_DESC_MAX_LEN=30
@@ -178,6 +181,8 @@ class Plant(models.Model):
         Garden,
         on_delete=models.CASCADE,
     )
+
+
 
 
 # class PlantPhoto(models.Model):

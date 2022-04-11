@@ -1,7 +1,7 @@
 from django.urls import path
 
-from Cottage_garden_project.accounts.views import UserLoginView, UserRegistrationView, ProfileDetailsView, \
-    UserLogoutView, change_password, UserEditView
+from Cottage_garden_project.accounts.views import UserLoginView, UserRegistrationView, \
+    UserLogoutView, change_password, UserEditView, ProfileDetailsView
 
 urlpatterns = (
     path('login/', UserLoginView.as_view(), name='login user'),
@@ -10,4 +10,5 @@ urlpatterns = (
     path('<int:pk>/', ProfileDetailsView.as_view(), name='profile details'),
     path('edit-password/', change_password, name='change_password'),
     path('edit/<int:pk>/', UserEditView.as_view, name='edit_profile'),
+
 )

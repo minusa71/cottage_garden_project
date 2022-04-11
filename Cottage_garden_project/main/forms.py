@@ -35,6 +35,7 @@ class CreateGardenForm(BootstrapFormMixin, forms.ModelForm):
                 }
 
             ),
+
         }
 
 
@@ -55,6 +56,7 @@ class CreatePlantForm(BootstrapFormMixin, forms.ModelForm):
     class Meta:
         model = Plant
         fields = ('name', 'type', 'sort', 'image','year', 'harvest_quantity', 'garden')
+
         widgets = {
             'name': forms.TextInput(
                 attrs={
@@ -71,6 +73,12 @@ class CreatePlantForm(BootstrapFormMixin, forms.ModelForm):
                     'placeholder': 'YYYY-MM-DD',
                 }
             ),
+            'harvest_quantity': forms.TextInput(
+                attrs={
+                    'placeholder': 'kg',
+                }
+            ),
+
         }
 
 
