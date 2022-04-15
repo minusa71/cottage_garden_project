@@ -185,6 +185,8 @@ class Plant(models.Model):
 
 
 
+
+
 # class PlantPhoto(models.Model):
 #     photo = cloudinary_models.CloudinaryField('image')
 #

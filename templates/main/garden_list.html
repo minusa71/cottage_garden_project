@@ -9,13 +9,16 @@
 <body>
     <H3>List of gardens:</H3>
     {% if garden_list %}
+
     {% for item in garden_list %}
 
         <div class="card" style="width: 40rem;">
         <img src="{{ item.image.url}}" class="card-img-top" alt="Garden image" width="40">
             <div class="card-body">
                 <h5 class="card-title">{{ "Owner: " }}{{ item.user }}  </h5>
-                <h6 class=card-text">{{ "Name: " }} {{ item.name }}  {{ "; Type: " }} {{ item.type }} {{ "; Address:" }} {{ item.address }}</h6>
+                <h6 class="card-title">{{ "Garden name: " }}{{ item.name }}  </h6>
+                <h6 class=card-text">{{ "Type: " }} {{ item.type }}    </h6>
+                <h6 class=card-text">{{ " Address:" }} {{ item.address }}</h6>
                 <a href="{% url 'plant view'  item.pk %}" class="btn btn-primary">Show plants</a>
             </div>
         {% csrf_token %}

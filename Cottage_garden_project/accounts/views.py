@@ -25,6 +25,13 @@ class UserEditView(generic.UpdateView):
     template_name = 'accounts/profile_edit.html'
     success_url = reverse_lazy('dashboard')
 
+    def has_permission(self, request):
+        return request.user.is_active and request.user.is_staff
+
+    # def get_object(self, queryset=None):
+    #     return get_object_or_404(self.model, pk=self.request.user.pk)
+
+
     def get_object(self):
         return self.request.user
 

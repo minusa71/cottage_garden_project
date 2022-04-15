@@ -7,14 +7,20 @@
     <title>Title</title>
 </head>
 <body>
-    <H3>List of plants:</H3>
-    {% if not plant_list %}
+    <H4>List of plants:</H4>
+    {% if plant_list %}
+         <h5 class="d-block w-100">  Number of plants in garden: {{ plant_list | length }}  </h5>
+
     {% for item in plant_list  %}
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <h5 class="card-title">{{ "Name: " }}{{ item.name }}  </h5>
-                    <img class="d-block w-100" src=" {{ item.image.name }}" alt="First slide">
+                    <h5 class="d-block w-100"> ----------------------------   </h5>
+                    <h5 class="d-block w-100">  Name:  {{ item.name | upper }}     </h5>
+                    <h5 class="d-block w-100">  Sort:  {{ item.sort }}     </h5>
+                    <h5 class="d-block w-100">  Year of planting : {{ item.year }}  </h5>
+                    <h5 class="d-block w-100">  Harvest average:  {{ item.harvest_quantity }} kg  </h5>
+                    <img class="d-block w-100" src=" {{ item.image }}" alt="First slide">
                 </div>
             </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

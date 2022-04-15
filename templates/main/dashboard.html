@@ -30,7 +30,7 @@
                             {% endfor %}
                             <!-- First 30 chars from the description -->
                             <p class="card-text">{{ plant.description|truncatechars:30 }}</p>
-                            <!-- Button to the Photo Details Page -->
+
                             <a href="{% url 'edit plant' plant.image.pk %}"  class="btn btn-primary">See details</a>
                         </div>
                     </div>
