@@ -183,39 +183,6 @@ class Plant(models.Model):
     )
 
 
-
-
-
-
-# class PlantPhoto(models.Model):
-#     photo = cloudinary_models.CloudinaryField('image')
-#
-#     description = models.TextField(
-#         null=True,
-#         blank=True,
-#     )
-#
-#     publication_date = models.DateTimeField(
-#         auto_now_add=True,
-#     )
-#
-#     likes = models.IntegerField(
-#         default=0,
-#     )
-#
-#     tagged_pets = models.ManyToManyField(
-#         Plant,
-#         # validate at least 1 pet
-#     )
-#
-#     user = models.ForeignKey(
-#         UserModel,
-#         on_delete=models.CASCADE,
-#     )
-
-
-
-
 class UseFullTips(models.Model):
     PLANT_NAME_TEXT_MAX_LEN=50
     plant_name = models.CharField(

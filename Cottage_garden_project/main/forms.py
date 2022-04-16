@@ -55,7 +55,7 @@ class CreatePlantForm(BootstrapFormMixin, forms.ModelForm):
 
     class Meta:
         model = Plant
-        fields = ('name', 'type', 'sort', 'image','year', 'harvest_quantity', 'garden')
+        fields = ('name', 'type', 'sort', 'image', 'year', 'harvest_quantity', 'plant_protections', 'garden')
 
         widgets = {
             'name': forms.TextInput(

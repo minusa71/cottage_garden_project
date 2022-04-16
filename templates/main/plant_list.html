@@ -20,7 +20,12 @@
                     <h5 class="d-block w-100">  Sort:  {{ item.sort }}     </h5>
                     <h5 class="d-block w-100">  Year of planting : {{ item.year }}  </h5>
                     <h5 class="d-block w-100">  Harvest average:  {{ item.harvest_quantity }} kg  </h5>
+                    {% if item.plant_protections %}
+                        <h5 class="d-block w-100">  Plant protection:  {{ item.plant_protections }}   </h5>
+                    {% endif %}
+                    {% if item.image %}
                     <img class="d-block w-100" src=" {{ item.image }}" alt="First slide">
+                    {% endif %}
                 </div>
             </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

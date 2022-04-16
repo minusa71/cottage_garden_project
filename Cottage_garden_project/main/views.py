@@ -48,6 +48,7 @@ class PlantView(views.ListView):
         return qs.filter(garden__user=self.request.user)
 
 
+
 class CreatePlantView(views.CreateView):
     template_name = 'main/add_plant.html'
     form_class = CreatePlantForm
